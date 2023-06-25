@@ -3,6 +3,9 @@ pipeline {
     
     parameters {
       string(name: 'SERVICENAMEPREFIX', defaultValue: 'sitename', description: 'sitename')
+      string(name: 'TARGET_HOST', defaultValue: 'https://wploadtests.roconpaas.com/wp-admin/', description: 'Any site url')
+      string(name: 'NUM_THREADS', defaultValue: '500', description: 'users requests' )
+      string(name: 'RAMP_TIME', defaultValue: '500', description: 'timing for users reuests' )
       
     }
 
@@ -16,6 +19,7 @@ pipeline {
                     sh'''
                
                     kubectl get all -n ${SERVICENAMEPREFIX}-ns
+		    sh test.sh
                     ls -lrt 
                     '''
 					}
