@@ -14,7 +14,7 @@ export RAMP_TIME="500"
 export DISPLAY=:0.0
 #export TARGET_KEYWORD="test"
 
-T_DIR=tests/trivial
+T_DIR=/home/ec2-user/apache-jmeter-5.6
 cd /home/jmeter/docker-jmeter/
 echo "I am from This directory running ls"
 ls -la
