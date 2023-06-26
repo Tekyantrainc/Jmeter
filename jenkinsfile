@@ -1,5 +1,5 @@
 pipeline {
-    agent 
+    agent any
     
     parameters {
       string(name: 'SERVICENAMEPREFIX', defaultValue: 'sitename', description: 'sitename')
