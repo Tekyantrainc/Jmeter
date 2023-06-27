@@ -15,6 +15,7 @@ export DISPLAY=:0.0
 #export TARGET_KEYWORD="test"
 
 T_DIR=/home/ec2-user/apache-jmeter-5.6
+pwd
 cd /home/ec2-user/apache-jmeter-5.6
 echo "I am from This directory running ls"
 ls -la
