@@ -19,6 +19,7 @@ pipeline {
                     sh'''
                
                     kubectl get all -n ${SERVICENAMEPREFIX}-ns
+		    pwd
 		    sh test.sh
                     ls -lrt 
                     '''
