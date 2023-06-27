@@ -16,12 +16,12 @@ export DISPLAY=:0.0
 
 T_DIR=/home/ec2-user/apache-jmeter-5.6
 pwd
-cd /home/ec2-user/apache-jmeter-5.6
+cd /var/lib/jenkins/workspace/
 echo "I am from This directory running ls"
 ls -la
 
 # Reporting dir: start fresh
-R_DIR='/home/ec2-user/apache-jmeter-5.6/tests/trivial/report'
+R_DIR='/var/lib/jenkins/workspace//tests/trivial/report'
 who am i
 sudo rm -rf ${R_DIR}
 mkdir -p ${R_DIR}
