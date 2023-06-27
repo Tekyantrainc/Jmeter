@@ -20,7 +20,7 @@ pipeline {
                
                     kubectl get all -n ${SERVICENAMEPREFIX}-ns
 		    pwd
-		    sh test.sh
+		    sh cd /var/lib/jenkins/workspace/apache-jmeter-5.6 test.sh
                     ls -lrt 
                     '''
 					}
