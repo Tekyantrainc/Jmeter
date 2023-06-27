@@ -15,19 +15,19 @@ export DISPLAY=:0.0
 #export TARGET_KEYWORD="test"
 
 T_DIR=/home/ec2-user/apache-jmeter-5.6
-cd /home/jmeter/docker-jmeter/
+cd /home/ec2-user/apache-jmeter-5.6
 echo "I am from This directory running ls"
 ls -la
 
 # Reporting dir: start fresh
-R_DIR='/home/jmeter/docker-jmeter/tests/trivial/report'
+R_DIR='/home/ec2-user/apache-jmeter-5.6/tests/trivial/report'
 who am i
 sudo rm -rf ${R_DIR}
 mkdir -p ${R_DIR}
 
 rm -f ${T_DIR}/test-plan.jtl ${T_DIR}/jmeter.log  > /dev/null 2>&1
 
-./run.sh -Dlog_level.jmeter=DEBUG \
+./test.sh -Dlog_level.jmeter=DEBUG \
 	-JTARGET_HOST=${TARGET_HOST} -JTARGET_PORT=${TARGET_PORT} \
 	-JNUM_THREADS=${NUM_THREADS} -JRAMP_TIME=${RAMP_TIME} \
 	-n -t ${T_DIR}/test-plan.jmx -l ${T_DIR}/test-plan.jtl -j ${T_DIR}/jmeter.log \
