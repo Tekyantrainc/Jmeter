@@ -18,9 +18,10 @@ pipeline {
     // some block
                     sh'''
                
-                    kubectl get all -n ${SERVICENAMEPREFIX}-ns
+                    pwd
 		    
 		    cd /home/ec2-user/jmeter/apache-jmeter-5.6/bin 
+		    pwd
 		    jmeter.sh -n -t examples/CSVSample.jmxjmeter.sh -n -t examples/CSVSample.jmx
                     ls -lrt 
                     '''
