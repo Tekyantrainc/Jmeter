@@ -18,6 +18,8 @@ pipeline {
                                 sudo sh update_variables.sh
                                 sleep 10
                                 sudo sh jmeter.sh -n -t demotest.jmx -l results.jtl
+                                cat results.jtl
+                                cat demotest.jmx
                             '''
                         }
                     }
