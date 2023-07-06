@@ -5,8 +5,14 @@ pipeline {
         string(name: 'TARGET_HOST', defaultValue: 'wploadtests.roconpaas.com/', description: 'Any site URL')
         string(name: 'NUM_THREADS', defaultValue: '500', description: 'Number of user requests')
         string(name: 'RAMP_TIME', defaultValue: '60', description: 'Timing for user requests')
+                
     }
+    environment {
+        RAMP_TIME = "${params.RAMP_TIME}"
+        TARGET_HOST = "${params.TARGET_HOST}"
+        NUM_THREADS = "${params.NUM_THREADS}"
 
+        }
     stages {
         stage('Hello') {
             steps {
@@ -14,13 +20,21 @@ pipeline {
                     withKubeConfig(caCertificate: '', clusterName: 'rocon-wordpress', contextName: '', credentialsId: 'rocon-wordpress', namespace: '', serverUrl: 'https://529e18dfa15f579357a7473f2f0bf5d0.gr7.us-west-2.eks.amazonaws.com/') {
                                 
                             sh '''
+            
                                 cd /var/lib/jenkins/workspace/apache-jmeter-5.6/bin
+                                JMETER_SCRIPT="/var/lib/jenkins/workspace/apache-jmeter-5.6/bin/demotest.jmx"
+
+                                # Update the JMeter test script with the provided variables
+                                sed -i -e "s/RAMP_TIME/$RAMP_TIME/g" "$JMETER_SCRIPT"
+                                sed -i -e "s/TARGET_HOST/$TARGET_HOST/g" "$JMETER_SCRIPT"
+                                sed -i -e "s/NUM_THREADS/$NUM_THREADS/g" "$JMETER_SCRIPT"
+
                                 sudo sh update_variables.sh
                                 sleep 10
                                 sudo sh jmeter.sh -n -t demotest.jmx -l results.jtl
                                 cat results.jtl
                                 cat demotest.jmx
-                            '''
+                                '''
                         }
                     }
                 }
