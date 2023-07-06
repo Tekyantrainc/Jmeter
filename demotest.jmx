@@ -14,7 +14,7 @@
         <stringProp name="ThreadGroup.num_threads">NUM_THREADS</stringProp>
         <stringProp name="ThreadGroup.ramp_time">RAMP_TIME</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
-        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.duration">RAMP_TIME</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
