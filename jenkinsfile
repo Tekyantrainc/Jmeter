@@ -25,9 +25,9 @@ pipeline {
                                 JMETER_SCRIPT="/var/lib/jenkins/workspace/apache-jmeter-5.6/bin/demotest.jmx"
 
                                 # Update the JMeter test script with the provided variables
-                                sed -i -e "s/RAMP_TIME/$RAMP_TIME/g" "$JMETER_SCRIPT"
-                                sed -i -e "s/TARGET_HOST/$TARGET_HOST/g" "$JMETER_SCRIPT"
-                                sed -i -e "s/NUM_THREADS/$NUM_THREADS/g" "$JMETER_SCRIPT"
+                                sudo sed -i -e "s/RAMP_TIME/$RAMP_TIME/g" "$JMETER_SCRIPT"
+                                sudo sed -i -e "s/TARGET_HOST/$TARGET_HOST/g" "$JMETER_SCRIPT"
+                                sudo sed -i -e "s/NUM_THREADS/$NUM_THREADS/g" "$JMETER_SCRIPT"
 
                                 sleep 10
                                 sudo sh jmeter.sh -n -t demotest.jmx -l results.jtl
