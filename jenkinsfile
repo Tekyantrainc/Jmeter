@@ -19,7 +19,9 @@ pipeline {
                     sh'''
                	        cd /var/lib/jenkins/workspace/apache-jmeter-5.6/bin
 			sudo sh /var/lib/jenkins/workspace/apache-jmeter-5.6/bin/update_variables.sh
+			sleep 10
 			sudo sh /var/lib/jenkins/workspace/apache-jmeter-5.6/bin/jmeter.sh -n -t demotest.jmx -l results.jtl
+			
 			
                     
                       '''
