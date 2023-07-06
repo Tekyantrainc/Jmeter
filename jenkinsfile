@@ -12,8 +12,9 @@ pipeline {
             steps {
                 withAWS(credentials: '17faf524-bf74-4003-8ef3-faf748fddbae') {
                     withKubeConfig(caCertificate: '', clusterName: 'rocon-wordpress', contextName: '', credentialsId: 'rocon-wordpress', namespace: '', serverUrl: 'https://529e18dfa15f579357a7473f2f0bf5d0.gr7.us-west-2.eks.amazonaws.com/') {
-                        dir('/var/lib/jenkins/workspace/apache-jmeter-5.6/bin') {
+                                {
                             sh '''
+                                cd /var/lib/jenkins/workspace/apache-jmeter-5.6/bin
                                 sudo sh update_variables.sh
                                 sleep 10
                                 sudo sh jmeter.sh -n -t demotest.jmx -l results.jtl
