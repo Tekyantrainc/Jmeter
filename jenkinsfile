@@ -31,7 +31,11 @@ pipeline {
                                 sudo sed -i -e "s/NUM_THREADS/$NUM_THREADS/g" "$JMETER_SCRIPT"
 
                                 sleep 10
+                                sudo rm -rf results.jtl
+                                sleep 5
                                 sudo sh jmeter.sh -n -t demotest.jmx -l results.jtl
+                                sleep 60
+                                sudo sh stoptest.sh
                                 cat results.jtl
                                 cat demotest.jmx
                                 '''
