@@ -17,14 +17,12 @@ pipeline {
 					withKubeConfig(caCertificate: '', clusterName: 'rocon-wordpress', contextName: '', credentialsId: 'rocon-wordpress', namespace: '', serverUrl: 'https://529e18dfa15f579357a7473f2f0bf5d0.gr7.us-west-2.eks.amazonaws.com/') {
     // some block
                     sh'''
-               
-                    pwd
-		    
-		    cd /home/ec2-user/jmeter/apache-jmeter-5.6/bin 
-		    pwd
-		    jmeter.sh -n -t examples/CSVSample.jmxjmeter.sh -n -t examples/CSVSample.jmx
-                    ls -lrt 
-                    '''
+               	        cd /var/lib/jenkins/workspace/apache-jmeter-5.6/bin
+			sudo sh /var/lib/jenkins/workspace/apache-jmeter-5.6/bin/update_variables.sh
+			sudo sh /var/lib/jenkins/workspace/apache-jmeter-5.6/bin/jmeter.sh -n -t demotest.jmx -l results.jtl
+			
+                    
+                      '''
 					}
                 }
             }
